@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 100ms;
+}
+
+button:focus,
+input:focus,
+dialog:focus {
+  outline: 2px solid #42355a;
+}
+
+button:hover {
+  opacity: 0.75;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+body {
+  background-color: #21153e;
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100svh;
+}
+
+body::before,
+body::after {
+  background-color: #271c49;
+  border-radius: 50%;
+  content: '';
+  filter: blur(6px);
+  position: absolute;
+  z-index: -1;
+}
+
+body::before {
+  bottom: 10%;
+  left: 10%;
+  height: 20rem;
+  width: 20rem;
+}
+
+body::after {
+  top: 5%;
+  right: 15%;
+  height: 25rem;
+  width: 25rem;
+}
+
+.music-app-container {
+  background-color: #140531;
+  border-radius: 15px;
+  box-shadow: 0 8px 17px #0c031e82;
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  max-width: 20rem;
+  width: 100%;
+}
+
+.thumbnail-img-wrapper {
+  border-radius: 15px 15px 0 0;
+  height: 20rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.thumbnail-img-wrapper::after {
+  background: linear-gradient(to bottom, transparent, #140531);
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 20%;
+}
+
+.thumbnail-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.header {
+  border-radius: 15px 15px 0 0;
+  backdrop-filter: blur(5px);
+  background-color: #1405314b;
+  padding: 0.75rem 1rem;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.header p {
+  font-size: 0.6rem;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+.song-title {
+  font-size: 1rem;
+  font-weight: 500;
+  line-height: 1rem;
+  margin-top: 0.35rem;
+}
+
+.song-artist {
+  font-size: 0.85rem;
+}
+
+.current-progress-wrapper {
+  padding: 0 1rem;
+}
+
+progress[value] {
+  /* Reset the default appearance */
+  appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  height: 5px;
+  width: 100%;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #42355a;
+  border-radius: 999px;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #e3ddf0;
+  border-radius: 10px;
+}
+
+.song-duration-times {
+  color: #968bbd;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+}
+
+.control-btns-container {
+  color: #968bbd;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+.central-btns-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.control-btns-container button {
+  border-radius: 50%;
+  display: flex;
+  padding: 0.25rem;
+  height: fit-content;
+  width: fit-content;
+}
+
+.control-btns-container .toggle-btn {
+  background: linear-gradient(to right, #dd14ee, #7000ff);
+  color: #fff;
+  display: flex;
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+
+.pause-icon {
+  display: none;
+}
+
+.playlist {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  margin-bottom: 1rem;
+  max-height: 12rem;
+}
+
+.song-item {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 1rem;
+  transition: background-color 150ms;
+}
+
+.song-item:hover {
+  background-color: #42355a5c;
+}
+
+.song-item-img {
+  border-radius: 7px;
+  flex-shrink: 0;
+  object-fit: cover;
+  height: 2.5rem;
+  width: 2.5rem;
+}
+
+.song-item-info {
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.song-item-title {
+  font-size: 0.75rem;
+}
+
+.song-item-artist {
+  color: #968bbd;
+  font-size: 0.6rem;
+}
+
+.song-item-duration {
+  margin-left: auto;
+}
+
+/* Changing the default scrollbar */
+.playlist::-webkit-scrollbar {
+  height: 0;
+  width: 0.5rem;
+}
+
+.playlist::-webkit-scrollbar-track {
+  background-color: inherit;
+  border-radius: 999px;
+}
+
+.playlist::-webkit-scrollbar-thumb {
+  background-color: #42355a;
+  border-radius: 999px;
+}
+
+@media (max-width: 640px) {
+  body::before {
+    bottom: 3%;
+    left: 50%;
+    translate: -50% 0;
+    height: 20rem;
+    width: 20rem;
+  }
+
+  body::after {
+    top: 3%;
+    right: 50%;
+    translate: 50% 0;
+    height: 20rem;
+    width: 20rem;
+  }
+}

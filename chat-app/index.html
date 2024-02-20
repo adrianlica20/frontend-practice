@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
+      <script src="script.js" defer></script>
+      <title>Chat App</title>
+</head>
+
+<body>
+      <div class="chat-app-container">
+            <section class="chats-container">
+                  <div class="searchbar-wrapper">
+                        <input type="search" id="searchbar" class="searchbar" placeholder="Search" spellcheck="false">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="search-icon" width="22" height="22"
+                              viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                              stroke-linecap="round" stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                              <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+                              <path d="M21 21l-6 -6" />
+                        </svg>
+                  </div>
+
+                  <div class="chats-list-wrapper">
+                        <ul class="chats-list" id="chats-list">
+                              <!-- Use this as a template for all the user chats -->
+                              <template id="tpl-user-chat">
+                                    <li class="chats-item">
+                                          <div class="user-info-wrapper">
+                                                <div class="user-info">
+                                                      <div class="user-img-wrapper">
+                                                            <img class="user-img" aria-user-img
+                                                                  alt="User profile picture" src="">
+                                                            <span class="user-status" aria-user-status
+                                                                  aria-value="online"></span>
+                                                      </div>
+                                                      <div class="name-and-id-wrapper">
+                                                            <p class="user-name" aria-user-name>My User</p>
+                                                            <p class="user-id" aria-user-id>@userid</p>
+                                                      </div>
+                                                </div>
+                                                <small class="timestamp" aria-timestamp>5min ago</small>
+                                          </div>
+                                          <p class="user-msg" aria-user-msg>The user's message</p>
+                                    </li>
+                              </template>
+                              <li class="chats-item">
+                                    <div class="user-info-wrapper">
+                                          <div class="user-info">
+                                                <div class="user-img-wrapper">
+                                                      <img class="user-img" aria-user-img
+                                                            src="https://shismqklzntzxworibfn.supabase.co/storage/v1/object/public/avatars/6d9761f7-21fd-49dc-b8d6-f7e17c2b6234.jpg"
+                                                            alt="User profile picture">
+                                                      <span class="user-status" aria-user-status></span>
+                                                </div>
+                                                <div class="name-and-id-wrapper">
+                                                      <p class="user-name" aria-user-name>Adrian</p>
+                                                      <p class="user-id" aria-user-id>@adrianlica</p>
+                                                </div>
+                                          </div>
+                                          <small class="timestamp" aria-timestamp>5min ago</small>
+                                    </div>
+                                    <p class="user-msg" aria-user-msg>Lorem ipsum dolor sit, amet consectetur
+                                          adipisicing
+                                          elit. Veniam, officiis. Nobis deleniti sit beatae. Fugit consectetur quasi
+                                          fugiat
+                                          impedit, illo, nisi minima veritatis aut molestias quos quibusdam, minus
+                                          cumque eum.
+                                    </p>
+                              </li>
+                              <li class="chats-item">
+                                    <div class="user-info-wrapper">
+                                          <div class="user-info">
+                                                <div class="user-img-wrapper">
+                                                      <img class="user-img" aria-user-img
+                                                            src="https://shismqklzntzxworibfn.supabase.co/storage/v1/object/public/avatars/6d9761f7-21fd-49dc-b8d6-f7e17c2b6234.jpg"
+                                                            alt="User profile picture">
+                                                      <span class="user-status" aria-user-status></span>
+                                                </div>
+                                                <div class="name-and-id-wrapper">
+                                                      <p class="user-name" aria-user-name>Adrian</p>
+                                                      <p class="user-id" aria-user-id>@adrianlica</p>
+                                                </div>
+                                          </div>
+                                          <small class="timestamp" aria-timestamp>5min ago</small>
+                                    </div>
+                                    <p class="user-msg" aria-user-msg>Lorem ipsum dolor sit, amet consectetur
+                                          adipisicing
+                                          elit. Veniam, officiis. Nobis deleniti sit beatae. Fugit consectetur quasi
+                                          fugiat
+                                          impedit, illo, nisi minima veritatis aut molestias quos quibusdam, minus
+                                          cumque eum.
+                                    </p>
+                              </li>
+
+
+                        </ul>
+                  </div>
+            </section>
+
+            <section class="open-conversation-container" id="open-conversation-container">
+                  <div class="open-user-header">
+                        <div class="open-user-img-wrapper">
+                              <img class="open-user-img" aria-open-friend-img
+                                    src="https://shismqklzntzxworibfn.supabase.co/storage/v1/object/public/avatars/6d9761f7-21fd-49dc-b8d6-f7e17c2b6234.jpg"
+                                    alt="User profile picture">
+                        </div>
+                        <div class="open-user-header-info">
+                              <p class="open-user-header-name" aria-open-user-name>Adrian Lica</p>
+                              <span class="open-user-header-status" aria-open-user-status>Online</span>
+                        </div>
+                        <button class="close-conversation-btn" id="close-conversation-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-arrow-right"
+                                    width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M5 12l14 0" />
+                                    <path d="M13 18l6 -6" />
+                                    <path d="M13 6l6 6" />
+                              </svg>
+                        </button>
+                  </div>
+                  <div class="chatbox">
+                        <div class="open-conversation-list-wrapper">
+                              <ul class="open-conversation-list">
+                                    <template id="tpl-open-conversation-item">
+                                          <li class="open-conversation-item open-conversation-item-friend">
+                                                <div class="user-img-wrapper">
+                                                      <img class="open-friend-img" aria-open-friend-img src=""
+                                                            alt="User profile picture">
+                                                      <span class="user-status" aria-user-status></span>
+                                                </div>
+                                                <div class="open-conversation-msg-wrapper">
+                                                      <small class="open-conversation-name-friend"
+                                                            aria-open-conversation-name-friend>Friend's name
+                                                      </small>
+                                                      <p class="open-conversation-msg open-conversation-msg-friend">
+                                                            Friend's message</p>
+                                                </div>
+                                          </li>
+                                    </template>
+                                    <template id="open-conversation-item-you">
+                                          <li class="open-conversation-item open-conversation-item-you">
+                                                <div class="open-conversation-msg-wrapper">
+                                                      <small class="open-conversation-name-you"
+                                                            aria-open-conversation-name-you>You
+                                                      </small>
+                                                      <p class="open-conversation-msg open-conversation-msg-you">Your
+                                                            message</p>
+                                                </div>
+                                          </li>
+                                    </template>
+                                    <li class="open-conversation-item open-conversation-item-friend">
+                                          <div class="user-img-wrapper">
+                                                <img class="open-friend-img" aria-open-friend-img
+                                                      src="https://shismqklzntzxworibfn.supabase.co/storage/v1/object/public/avatars/6d9761f7-21fd-49dc-b8d6-f7e17c2b6234.jpg"
+                                                      alt="User profile picture">
+                                                <span class="user-status" aria-user-status></span>
+                                          </div>
+                                          <div class="open-conversation-msg-wrapper">
+                                                <small class="open-conversation-name-friend"
+                                                      aria-open-conversation-name-friend>Adrian
+                                                      Lica
+                                                </small>
+                                                <p class="open-conversation-msg open-conversation-msg-friend">Lorem
+                                                      ipsum
+                                                      dolor
+                                                      sit amet consectetur
+                                                      adipisicing
+                                                      elit. Quam voluptate vitae ducimus
+                                                      pariatur quaerat officia rem itaque fuga maxime eum doloremque
+                                                      dolore,
+                                                      deleniti
+                                                      laboriosam
+                                                      nulla dicta cumque! Aliquid, nulla nam.</p>
+                                          </div>
+                                    </li>
+                                    <li class="open-conversation-item open-conversation-item-you">
+                                          <div class="open-conversation-msg-wrapper">
+                                                <small class="open-conversation-name-you"
+                                                      aria-open-conversation-name-you>You
+                                                </small>
+                                                <p class="open-conversation-msg open-conversation-msg-you">Lorem ipsum
+                                                      dolor
+                                                      sit amet consectetur
+                                                      adipisicing
+                                                      elit. Quam voluptate vitae ducimus
+                                                      pariatur quaerat officia rem itaque fuga maxime eum doloremque
+                                                      dolore,
+                                                      deleniti
+                                                      laboriosam
+                                                      nulla dicta cumque! Aliquid, nulla nam.</p>
+                                          </div>
+                                    </li>
+
+                              </ul>
+                        </div>
+                        <form class="send-msg-wrapper">
+                              <input type="text" name="send-msg-input" id="send-msg-input" class="send-msg-input"
+                                    aria-label="Write a message" placeholder="Send a message" spellcheck="false">
+                              <button type="button" class="send-msg-btn" id="send-msg-btn"
+                                    aria-label="Send the message">Send</button>
+                        </form>
+                  </div>
+            </section>
+      </div>
+</body>
+
+</html>

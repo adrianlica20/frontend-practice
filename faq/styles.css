@@ -1,0 +1,141 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@300;400;500;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+body {
+  background: linear-gradient(to bottom right, #fcd7b5, #aff3ff);
+  font-family: 'Fira Sans', sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+main {
+  background-color: #121118;
+  border-radius: 20px;
+  box-shadow: 0 15px 15px -6px #12111892;
+  color: #fff;
+  max-width: 50rem;
+  overflow: hidden;
+  padding: 3rem;
+  padding-bottom: 6rem;
+  position: relative;
+  width: 100%;
+}
+
+#close-btn {
+  background-color: transparent;
+  border: none;
+  border-radius: 50%;
+  color: #efefef;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.25rem;
+  position: absolute;
+  right: 1rem;
+  top: 1rem;
+}
+
+#close-btn:hover {
+  background-color: #c4c4c449;
+  scale: 1.25;
+}
+
+main details {
+  border-bottom: 2px dashed #a7a7a77f;
+  padding: 1rem 0;
+}
+
+h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 2rem;
+  max-width: max-content;
+  position: relative;
+}
+
+h1:after {
+  background-color: #f77422;
+  border-radius: 999px;
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  translate: -50% 0;
+  height: 5px;
+  width: 100%;
+}
+
+summary {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 500;
+  list-style-type: none;
+}
+
+.answer {
+  font-weight: 300;
+  padding-top: 1rem;
+}
+
+/* Decorations styles */
+.blue-wave {
+  position: absolute;
+  bottom: -3rem;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  width: 100%;
+  z-index: 1;
+}
+
+.orange-wave {
+  position: absolute;
+  bottom: -2rem;
+  left: 0;
+  right: 0;
+  pointer-events: none;
+  width: 100%;
+}
+
+/* Smaller screens media query */
+@media (max-width: 768px) {
+  main {
+    border-radius: 0;
+    padding: 1.5rem;
+    padding-bottom: 3.5rem;
+  }
+
+  h1 {
+    margin: 0 auto 1rem;
+  }
+
+  /* Decorations styles */
+  .blue-wave {
+    top: -2.5rem;
+    rotate: 180deg;
+    opacity: 0.2;
+  }
+
+  .orange-wave {
+    bottom: -1.5rem;
+    opacity: 0.2;
+  }
+}

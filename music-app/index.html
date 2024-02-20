@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
+      <script src="script.js" defer></script>
+      <title>Music App</title>
+</head>
+
+<body>
+      <section class="music-app-container">
+            <header class="header">
+                  <p>PLAYING NOW</p>
+                  <h1 class="song-title" id="song-title">Utah Freestyle</h1>
+                  <small class="song-artist" id="song-artist">Russ</small>
+            </header>
+
+            <div class="thumbnail-img-wrapper">
+                  <img class="thumbnail-img" id="thumbnail"
+                        src="https://images.unsplash.com/photo-1706125356134-a20ea29b412b?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzfHx8ZW58MHx8fHx8" />
+            </div>
+
+            <div class="current-progress-wrapper">
+                  <progress id="progress" value="50" max="100"></progress>
+                  <div class="song-duration-times">
+                        <small id="current-time">0:00</small>
+                        <small id="total-time">0:00</small>
+                  </div>
+            </div>
+
+            <div class="control-btns-container">
+                  <button id="shuffle-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                              <path d="M18 4l3 3l-3 3"></path>
+                              <path d="M18 20l3 -3l-3 -3"></path>
+                              <path d="M3 7h3a5 5 0 0 1 5 5a5 5 0 0 0 5 5h5"></path>
+                              <path d="M21 7h-5a4.978 4.978 0 0 0 -3 1m-4 8a4.984 4.984 0 0 1 -3 1h-3"></path>
+                        </svg>
+                  </button>
+                  <div class="central-btns-wrapper">
+                        <button id="prev-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M19.496 4.136l-12 7a1 1 0 0 0 0 1.728l12 7a1 1 0 0 0 1.504 -.864v-14a1 1 0 0 0 -1.504 -.864z"
+                                          stroke-width="0" fill="currentColor" />
+                                    <path d="M4 4a1 1 0 0 1 .993 .883l.007 .117v14a1 1 0 0 1 -1.993 .117l-.007 -.117v-14a1 1 0 0 1 1 -1z"
+                                          stroke-width="0" fill="currentColor" />
+                              </svg>
+                        </button>
+                        <button id="toggle-btn" class="toggle-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="play-icon" width="32" height="32"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M6 4v16a1 1 0 0 0 1.524 .852l13 -8a1 1 0 0 0 0 -1.704l-13 -8a1 1 0 0 0 -1.524 .852z"
+                                          stroke-width="0" fill="currentColor"></path>
+                              </svg>
+
+                              <!-- PAUSE SVG ICON -->
+                              <svg xmlns="http://www.w3.org/2000/svg" class="pause-icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M9 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z"
+                                          stroke-width="0" fill="currentColor"></path>
+                                    <path d="M17 4h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h2a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2z"
+                                          stroke-width="0" fill="currentColor"></path>
+                              </svg>
+                        </button>
+                        <button id="next-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M3 5v14a1 1 0 0 0 1.504 .864l12 -7a1 1 0 0 0 0 -1.728l-12 -7a1 1 0 0 0 -1.504 .864z"
+                                          stroke-width="0" fill="currentColor" />
+                                    <path d="M20 4a1 1 0 0 1 .993 .883l.007 .117v14a1 1 0 0 1 -1.993 .117l-.007 -.117v-14a1 1 0 0 1 1 -1z"
+                                          stroke-width="0" fill="currentColor" />
+                              </svg>
+                        </button>
+                  </div>
+                  <button id="repeat-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                              stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round"
+                              stroke-linejoin="round">
+                              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                              <path d="M4 12v-3a3 3 0 0 1 3 -3h13m-3 -3l3 3l-3 3"></path>
+                              <path d="M20 12v3a3 3 0 0 1 -3 3h-13m3 3l-3 -3l3 -3"></path>
+                        </svg>
+                  </button>
+            </div>
+
+            <ul class="playlist" id="playlist">
+                  <!-- Add your songs here -->
+                  <li class="song-item">
+                        <img data-song-img
+                              src="https://images.unsplash.com/photo-1705773335857-2c0a243a604a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
+                              class="song-item-img">
+                        <div class="song-item-info">
+                              <small data-song-title class="song-item-title">Wonder</small>
+                              <small data-song-artist class="song-item-artist">Kanye West</small>
+                        </div>
+                        <small data-song-duration class="song-item-duration">3:00</small>
+                  </li>
+                  <li class="song-item">
+                        <img data-song-img
+                              src="https://images.unsplash.com/photo-1705773335857-2c0a243a604a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
+                              class="song-item-img">
+                        <div class="song-item-info">
+                              <small data-song-title class="song-item-title">THE LONELIEST</small>
+                              <small data-song-artist class="song-item-artist">Maneskin</small>
+                        </div>
+                        <small data-song-duration class="song-item-duration">3:00</small>
+                  </li>
+                  <li class="song-item">
+                        <img data-song-img
+                              src="https://images.unsplash.com/photo-1705773335857-2c0a243a604a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
+                              class="song-item-img">
+                        <div class="song-item-info">
+                              <small data-song-title class="song-item-title">Fly me to the moon</small>
+                              <small data-song-artist class="song-item-artist">Flank Sinatra</small>
+                        </div>
+                        <small data-song-duration class="song-item-duration">3:00</small>
+                  </li>
+                  <li class="song-item">
+                        <img data-song-img
+                              src="https://images.unsplash.com/photo-1705773335857-2c0a243a604a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
+                              class="song-item-img">
+                        <div class="song-item-info">
+                              <small data-song-title class="song-item-title">Love me tender</small>
+                              <small data-song-artist class="song-item-artist">Elvis Presley</small>
+                        </div>
+                        <small data-song-duration class="song-item-duration">3:00</small>
+                  </li>
+                  <li class="song-item">
+                        <img data-song-img
+                              src="https://images.unsplash.com/photo-1705773335857-2c0a243a604a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
+                              class="song-item-img">
+                        <div class="song-item-info">
+                              <small data-song-title class="song-item-title">Love me tender</small>
+                              <small data-song-artist class="song-item-artist">Elvis Presley</small>
+                        </div>
+                        <small data-song-duration class="song-item-duration">3:00</small>
+                  </li>
+                  <li class="song-item">
+                        <img data-song-img
+                              src="https://images.unsplash.com/photo-1705773335857-2c0a243a604a?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHwzMHx8fGVufDB8fHx8fA%3D%3D"
+                              class="song-item-img">
+                        <div class="song-item-info">
+                              <small data-song-title class="song-item-title">Love me tender</small>
+                              <small data-song-artist class="song-item-artist">Elvis Presley</small>
+                        </div>
+                        <small data-song-duration class="song-item-duration">3:00</small>
+                  </li>
+            </ul>
+      </section>
+</body>
+
+</html>

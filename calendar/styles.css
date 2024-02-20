@@ -1,0 +1,455 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+button {
+  background-color: transparent;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: opacity 100ms;
+}
+
+button:focus,
+input:focus,
+dialog:focus {
+  outline: 2px solid #9e5d2e;
+}
+
+button:hover {
+  opacity: 0.75;
+}
+
+svg {
+  flex-shrink: 0;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1682686581427-7c80ab60e3f3?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Poppins', sans-serif;
+  min-height: 100svh;
+}
+
+body::before {
+  background-color: #5c3e2849;
+  backdrop-filter: blur(6px);
+  content: '';
+  position: fixed;
+  inset: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.calendar-container {
+  background-image: url('https://images.unsplash.com/photo-1666053582202-25115d97c97b?q=80&w=3132&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  border-radius: 15px;
+  box-shadow: 0 5px 30px #160e07ce;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 50rem;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+}
+
+/* CALENDAR GRID DATES STYLES */
+.calendar-dates-container {
+  padding: 2rem;
+  margin: auto;
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.current-month-title {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.current-month-wrapper,
+.years-container {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+.prev-year-btn,
+.next-year-btn,
+.prev-month-btn,
+.next-month-btn {
+  display: flex;
+  border-radius: 50%;
+  padding: 0.25rem;
+  transition: background-color 100ms;
+}
+
+.prev-month-btn,
+.next-month-btn {
+  display: none;
+}
+
+.years-container .prev-year-btn:hover,
+.years-container .next-year-btn:hover {
+  background-color: #9e5d2e50;
+}
+
+.all-months-grid {
+  color: inherit;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.5rem;
+  position: relative;
+}
+
+.all-months-grid::after {
+  border-bottom: 1px solid #ffffff6b;
+  bottom: 0;
+  content: '';
+  position: absolute;
+  width: 100%;
+}
+
+.week-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.month-days-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  row-gap: 0.5rem;
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.month-days-grid li button {
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+}
+
+/* EVENTS SIDEBAR STYLES */
+.events-sidebar {
+  background-color: #74492b72;
+  border-radius: 0 15px 15px 0;
+  align-self: stretch;
+  padding: 1rem;
+  max-width: 15rem;
+  width: 100%;
+}
+
+.add-events-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.toggle-events-btn {
+  border-radius: 50%;
+  color: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.add-event-btn-outer {
+  color: inherit;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.add-events-wrapper .plus-icon {
+  background-color: #9e5d2e;
+  border-radius: 50%;
+  padding: 0.15rem;
+}
+
+.current-date-container {
+  margin: 5rem 0 3rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.current-date {
+  font-size: 7rem;
+  font-weight: 800;
+  line-height: 7rem;
+}
+
+.current-weekday {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.current-date-events-list {
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-size: 0.8rem;
+  margin-bottom: 2rem;
+  max-height: 10rem;
+  overflow: scroll;
+  padding: 0.35rem;
+}
+
+/* Changing the default scrollbar */
+.current-date-events-list::-webkit-scrollbar {
+  height: 0;
+  width: 0.5rem;
+}
+
+.current-date-events-list::-webkit-scrollbar-track {
+  background-color: inherit;
+  border-radius: 999px;
+}
+
+.current-date-events-list::-webkit-scrollbar-thumb {
+  background-color: #9e5d2e;
+  border-radius: 999px;
+}
+
+.current-date-event-item {
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.current-date-events-list .check-icon {
+  border: 1.5px solid #fff;
+  border-radius: 50%;
+  margin-top: 0.25rem;
+  padding: 0.15rem;
+  /* Background is transparent by default */
+  background-color: transparent;
+  /* background-color: #1b9e18; */
+  /* Checkmark is hidden by default */
+  stroke-opacity: 0;
+}
+
+.text-and-time-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Modal styles for when adding a new event */
+.overlay {
+  background-color: #00000027;
+  backdrop-filter: blur(3px);
+  content: '';
+  inset: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  /* Change this to make the overlay visible */
+  display: none;
+}
+
+.add-new-event-modal {
+  background-color: #5c3e28f4;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 5px 20px #0e0904e3;
+  color: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  translate: -50% -50%;
+  text-align: center;
+  max-width: 20rem;
+  width: 100%;
+  transition: scale 100ms;
+}
+
+.add-new-event-heading {
+  font-size: 1.2rem;
+  font-weight: 500;
+  padding: 1rem;
+}
+
+.add-new-event-input-wrapper {
+  background-color: #160e07ce;
+  display: block;
+  padding: 0.75rem;
+}
+
+.add-new-event-input-wrapper label {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-size: 0.8rem;
+}
+
+.add-new-event-input {
+  background-color: #160e07d2;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  margin-bottom: 0.75rem;
+  padding: 0.5rem;
+  width: 100%;
+}
+
+input[type='time'] {
+  background-color: #160e07d2;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+  font-family: inherit;
+  font-size: 1rem;
+  margin: 0 auto;
+  padding: 0.35rem 0.5rem;
+}
+
+input[type='time']::-webkit-calendar-picker-indicator {
+  display: none;
+}
+
+.add-event-btn-modal {
+  background-color: #160e079a;
+  border-radius: 999px;
+  font-weight: 600;
+  margin: 0.75rem auto;
+  padding: 0.5rem 1.5rem;
+  text-shadow: 1px 1px 2px #ffffff52;
+}
+
+/* Use these classes for current day, selected day, and selected month styling */
+.current-month-day {
+  background-color: #bc70392b;
+  border: 2px solid #bc70392b;
+  border-radius: 50%;
+  padding: 0.15rem;
+}
+
+.selected-day {
+  background-color: #9e5d2e;
+  border: 2px solid #9e5d2e;
+  border-radius: 50%;
+  padding: 0.15rem;
+}
+
+.selected-month {
+  font-weight: 700;
+}
+
+/* MEDIA QUERY - MOBILE VIEW */
+@media (max-width: 768px) {
+  .calendar-container {
+    border-radius: 5px;
+    max-width: fit-content;
+    position: relative;
+  }
+  /* CALENDAR GRID MOBILE STYLES */
+  .calendar-dates-container {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .calendar-header {
+    margin-bottom: 1.5rem;
+    display: flex;
+  }
+
+  .current-month-title {
+    font-size: 1.1rem;
+  }
+
+  .prev-month-btn,
+  .next-month-btn {
+    display: flex;
+  }
+
+  .all-months-grid {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    gap: 0.5rem;
+    margin: 0.5rem;
+    padding-bottom: 0.5rem;
+    position: relative;
+    width: 100%;
+    max-width: 5rem;
+    overflow: hidden;
+    display: none;
+  }
+
+  .all-months-grid::after {
+    display: none;
+  }
+
+  .week-days-grid {
+    font-size: 1.1rem;
+  }
+
+  .month-days-grid li button {
+    font-size: 1rem;
+  }
+
+  /* SIDEBAR MOBILE STYLES */
+  .events-sidebar {
+    /* display: none; */
+    background-color: #5d3b22;
+    border-radius: 0 5px 5px 0;
+    height: 100%;
+    max-width: 100%;
+    position: absolute;
+    right: 0;
+  }
+
+  .current-date-container {
+    margin: 2rem 0;
+  }
+
+  .current-date {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 4rem;
+  }
+
+  .current-weekday {
+    font-size: 1rem;
+  }
+
+  .current-date-events-list {
+    background-color: #3f2919b3;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .all-months-grid {
+    max-width: 40rem;
+    overflow-x: scroll;
+  }
+}

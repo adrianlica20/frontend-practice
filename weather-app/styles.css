@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Teko:wght@300;600&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: url('https://images.unsplash.com/photo-1600850203195-af84a724b2d8?q=80&w=2970&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: center center;
+  color: #f2f2f2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+}
+
+body::before {
+  backdrop-filter: blur(4px);
+  content: '';
+  height: 100%;
+  width: 100%;
+  inset: 0;
+  position: fixed;
+}
+
+h1,
+h2 {
+  font-family: 'Teko', sans-serif;
+}
+
+.weather-container {
+  background-color: #1a1c1e;
+  box-shadow: 5px 10px 20px #00000064;
+  border-radius: 15px;
+  padding: clamp(1.5rem, 5vw, 3rem);
+  position: relative;
+  max-width: 28rem;
+  width: 100%;
+}
+
+.city {
+  font-size: 2rem;
+  letter-spacing: 1px;
+}
+
+.current-date {
+  font-size: 1rem;
+  color: #7c7e80;
+}
+
+.current-temp-and-icon-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.current-temp {
+  font-size: 6rem;
+}
+
+.current-weather-icon svg {
+  width: 100%;
+  max-width: 6rem;
+  height: auto;
+}
+
+.current-conditions {
+  background-color: #202328;
+  padding: 1rem 0;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.conditions-data {
+  font-weight: 500;
+}
+
+.conditions-label {
+  /* font-size: 0.8rem; */
+  color: #7c7e80;
+}
+
+.card-layout {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.forecast-week-list {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 1rem;
+  overflow-x: scroll;
+  margin: 2rem 0;
+  /* font-size: 0.8rem; */
+}
+
+.forecast-temperatures-container {
+  display: flex;
+  gap: 0.15rem;
+  padding-bottom: 1rem;
+}
+
+.forecast-week-list::-webkit-scrollbar {
+  height: 0.5rem;
+}
+
+.forecast-week-list::-webkit-scrollbar-track {
+  background: #313941;
+}
+
+.forecast-week-list::-webkit-scrollbar-thumb {
+  background-color: #7c7e80;
+  border-radius: 999px;
+}

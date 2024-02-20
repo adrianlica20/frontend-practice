@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url('https://images.unsplash.com/photo-1704835142208-1a214bfb7985?q=80&w=3028&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+  background-size: cover;
+  background-position: top right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Space Mono', monospace;
+  font-weight: 700;
+  margin: 0;
+  min-height: 100vh;
+  text-align: center;
+}
+
+.keys-wrapper {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.key {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.key p,
+.press-any-key {
+  background-color: #b5f2fe48;
+  border: 3px solid #b5f2fe;
+  box-shadow: 0 0 6px #cef7ffb7;
+  color: #d8f8ff;
+  font-size: 22px;
+  padding: 10px 20px;
+}
+
+.key p {
+  min-width: 150px;
+  /* This is a fix for the Space e.key, so you don't have to make a check and manipulate CSS for the empty space */
+  min-height: 60px;
+}
+
+.key small {
+  color: #feeb6e;
+}
+
+/* Hidden by default */
+.keys-wrapper {
+  scale: 0;
+}

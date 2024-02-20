@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="styles.css">
+      <script src="script.js" defer></script>
+      <title>Calendar</title>
+</head>
+
+<body>
+      <div class="calendar-container">
+            <section class="calendar-dates-container">
+                  <header class="calendar-header">
+                        <div class="current-month-wrapper">
+                              <button aria-label="prev-month" id="prev-month-btn" class="prev-month-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="arrow-left-icon" width="24"
+                                          height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                          fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path d="M15 6l-6 6l6 6" />
+                                    </svg>
+                              </button>
+                              <h1 id="current-month-title" class="current-month-title">January</h1>
+                              <button aria-label="next-month" id="next-month-btn" class="next-month-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="arrow-right-icon" width="24"
+                                          height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                          fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path d="M9 6l6 6l-6 6" />
+                                    </svg>
+                              </button>
+                        </div>
+                        <div class="years-container">
+                              <button aria-label="prev-year" id="prev-year-btn" class="prev-year-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="arrow-left-icon" width="24"
+                                          height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                          fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path d="M15 6l-6 6l6 6" />
+                                    </svg>
+                              </button>
+                              <span class="year" id="year">2024</span>
+                              <button aria-label="next-year" id="next-year-btn" class="next-year-btn">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="arrow-right-icon" width="24"
+                                          height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
+                                          fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path d="M9 6l6 6l-6 6" />
+                                    </svg>
+                              </button>
+                        </div>
+                  </header>
+                  <main id="calendar-grid-container" class="calendar-grid-container">
+                        <div class="all-months-grid-wrapper">
+                              <ul class="all-months-grid">
+                                    <li><button aria-label="January" class="selected-month">JAN</button></li>
+                                    <li><button aria-label="February">FEB</button></li>
+                                    <li><button aria-label="March">MAR</button></li>
+                                    <li><button aria-label="April">APR</button></li>
+                                    <li><button aria-label="May">MAY</button></li>
+                                    <li><button aria-label="June">JUN</button></li>
+                                    <li><button aria-label="July">JUL</button></li>
+                                    <li><button aria-label="August">AUG</button></li>
+                                    <li><button aria-label="September">SEP</button></li>
+                                    <li><button aria-label="October">OCT</button></li>
+                                    <li><button aria-label="November">NOV</button></li>
+                                    <li><button aria-label="December">DEC</button></li>
+                              </ul>
+                        </div>
+
+                        <ul class="week-days-grid">
+                              <li aria-label="Monday">MON</li>
+                              <li aria-label="Tuesday">TUE</li>
+                              <li aria-label="Wednesday">WED</li>
+                              <li aria-label="Thursday">THU</li>
+                              <li aria-label="Friday">FRI</li>
+                              <li aria-label="Saturday">SAT</li>
+                              <li aria-label="Sunday">SUN</li>
+                        </ul>
+
+                        <ul class="month-days-grid">
+                              <!-- This is a day-cell list item template -->
+                              <template id="tpl-day-cell">
+                                    <li role="gridcell" aria-selected="false"><button>1</button></li>
+                              </template>
+                              <!-- Delete all the dates below -->
+                              <li role="gridcell" aria-selected="false"><button>1</button></li>
+                              <li role="gridcell" aria-selected="false"><button>2</button></li>
+                              <li role="gridcell" aria-selected="false"><button>3</button></li>
+                              <li role="gridcell" aria-selected="false"><button>4</button></li>
+                              <li role="gridcell" aria-selected="false"><button>5</button></li>
+                              <li role="gridcell" aria-selected="false"><button>6</button></li>
+                              <li role="gridcell" aria-selected="false"><button>7</button></li>
+                              <li role="gridcell" aria-selected="false"><button>8</button></li>
+                              <li role="gridcell" aria-selected="false"><button>9</button></li>
+                              <li role="gridcell" aria-selected="false"><button>10</button></li>
+                              <li role="gridcell" aria-selected="false"><button>11</button></li>
+                              <li role="gridcell" aria-selected="false"><button>12</button></li>
+                              <li role="gridcell" aria-selected="false"><button class="selected-day">13</button></li>
+                              <li role="gridcell" aria-selected="false"><button>14</button></li>
+                              <li role="gridcell" aria-selected="false"><button>15</button></li>
+                              <li role="gridcell" aria-selected="false"><button>16</button></li>
+                              <li role="gridcell" aria-selected="false"><button>17</button></li>
+                              <li role="gridcell" aria-selected="false"><button>18</button></li>
+                              <li role="gridcell" aria-selected="false"><button>19</button></li>
+                              <li role="gridcell" aria-selected="false"><button>20</button></li>
+                              <li role="gridcell" aria-selected="false"><button>21</button></li>
+                              <li role="gridcell" aria-selected="false"><button>22</button></li>
+                              <li role="gridcell" aria-selected="false"><button class="current-month-day">23</button>
+                              </li>
+                              <li role="gridcell" aria-selected="false"><button>24</button></li>
+                              <li role="gridcell" aria-selected="false"><button>25</button></li>
+                              <li role="gridcell" aria-selected="false"><button>26</button></li>
+                              <li role="gridcell" aria-selected="false"><button>27</button></li>
+                              <li role="gridcell" aria-selected="false"><button>28</button></li>
+                              <li role="gridcell" aria-selected="false"><button>29</button></li>
+                              <li role="gridcell" aria-selected="false"><button>30</button></li>
+                              <li role="gridcell" aria-selected="false"><button>31</button></li>
+                        </ul>
+                  </main>
+            </section>
+            <section id="events-sidebar" class="events-sidebar">
+                  <div class="add-events-wrapper">
+                        <button aria-label="Toggle the events sidebar" id="toggle-events-btn" class="toggle-events-btn">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="arrow-right-icon" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M9 6l6 6l-6 6" />
+                              </svg>
+                        </button>
+                        <button aria-label="Add new event" id="add-event-btn-outer" class="add-event-btn-outer">
+                              Add Event
+                              <svg xmlns="http://www.w3.org/2000/svg" class="plus-icon" width="24" height="24"
+                                    aria-hidden="true" focusable="false" viewBox="0 0 24 24" stroke-width="2"
+                                    stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M12 5l0 14" />
+                                    <path d="M5 12l14 0" />
+                              </svg>
+                        </button>
+
+                  </div>
+
+                  <div class="current-date-container">
+                        <span id="current-date" class="current-date">23</span>
+                        <span id="current-weekday" class="current-weekday">TUESDAY</span>
+                  </div>
+
+                  <ul id="current-date-events-list" class="current-date-events-list">
+                        <template id="tpl-event-item">
+                              <li class="current-date-event-item">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="20" height="20"
+                                          viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none"
+                                          stroke-linecap="round" stroke-linejoin="round">
+                                          <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                          <path d="M5 12l5 5l10 -10" />
+                                    </svg>
+                                    <div class="text-and-time-wrapper">
+                                          <p data-event-text class="current-date-event-text">Complete the Make me
+                                                Functional
+                                                Challenge</p>
+                                          <span data-event-time class="current-date-event-time">18:50</span>
+                                    </div>
+                              </li>
+                        </template>
+                        <li class="current-date-event-item">
+                              <svg xmlns="http://www.w3.org/2000/svg" class="check-icon" width="20" height="20"
+                                    viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                    <path d="M5 12l5 5l10 -10" />
+                              </svg>
+                              <div class="text-and-time-wrapper">
+                                    <p data-event-text class="current-date-event-text">Complete the Make me Functional
+                                          Challenge</p>
+                                    <span data-event-time class="current-date-event-time">18:50</span>
+                              </div>
+                        </li>
+                  </ul>
+            </section>
+      </div>
+
+      <!-- Add new event modal -->
+      <div class="overlay" id="overlay"></div>
+      <dialog id="add-new-event-modal" class="add-new-event-modal">
+            <p class="add-new-event-heading">What's the next event?</p>
+            <div class="add-new-event-input-wrapper">
+                  <label for="add-new-event-input">Event Name:</label>
+                  <input type="text" id="add-new-event-input" class="add-new-event-input" spellcheck="false">
+                  <label for="event-time">Event Time:</label>
+                  <input type="time" name="event-time" aria-event-time>
+            </div>
+            <button type="submit" id="add-event-btn-modal" class="add-event-btn-modal">ADD EVENT</button>
+      </dialog>
+</body>
+
+</html>
